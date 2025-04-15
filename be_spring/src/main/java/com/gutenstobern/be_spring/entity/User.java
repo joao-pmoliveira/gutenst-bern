@@ -19,31 +19,20 @@ public class User {
     @Column(length = 255, unique = true, nullable = false)
     String username;
 
+    @Column(length = 255, nullable = false)
+    String password;
+
     @ManyToOne
     @JoinColumn(name = "role_id", referencedColumnName = "id")
-    Role role;
+    UserRole role;
 
-    public Long getId() {
-        return id;
+    public User() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public User(String name, String password, UserRole userRole) {
+        this.username = name;
+        this.password = password;
+        this.role = userRole;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
 }

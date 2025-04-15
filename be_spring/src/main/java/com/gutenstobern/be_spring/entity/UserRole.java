@@ -11,8 +11,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "edition_author_role")
-public class EditionAuthorRole {
+@Table(name = "user_role")
+public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -21,29 +21,12 @@ public class EditionAuthorRole {
     String name;
 
     @OneToMany(mappedBy = "role")
-    Set<EditionAuthor> editionAuthors;
+    Set<User> user;
 
-    public Long getId() {
-        return id;
+    public UserRole() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public UserRole(String name) {
         this.name = name;
-    }
-
-    public Set<EditionAuthor> getEditionAuthors() {
-        return editionAuthors;
-    }
-
-    public void setEditionAuthors(Set<EditionAuthor> editionAuthors) {
-        this.editionAuthors = editionAuthors;
     }
 }

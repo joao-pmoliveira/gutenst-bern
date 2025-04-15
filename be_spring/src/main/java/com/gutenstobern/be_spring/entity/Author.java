@@ -2,11 +2,13 @@ package com.gutenstobern.be_spring.entity;
 
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -20,30 +22,16 @@ public class Author {
     @Column(length = 255, unique = true, nullable = false)
     String name;
 
-    @OneToMany(mappedBy = "author")
-    Set<EditionAuthor> editions;
+    @ManyToMany(mappedBy = "authors")
+    Set<Book> books;
 
-    public Long getId() {
-        return id;
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
+    Set<EditionContributor> contributions;
+
+    public Author() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Author(String name) {
         this.name = name;
-    }
-
-    public Set<EditionAuthor> getEditions() {
-        return editions;
-    }
-
-    public void setEditions(Set<EditionAuthor> editions) {
-        this.editions = editions;
     }
 }

@@ -9,8 +9,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "edition_author")
-public class EditionAuthor {
+@Table(name = "edition_contributor")
+public class EditionContributor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -24,39 +24,18 @@ public class EditionAuthor {
     Edition edition;
 
     @ManyToOne
-    @JoinColumn(name = "role_id", referencedColumnName = "id")
-    EditionAuthorRole role;
+    @JoinColumn(name = "edition_contributor_role_id", referencedColumnName = "id")
+    ContributorRole role;
 
-    public Long getId() {
-        return id;
+    public EditionContributor() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Author getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Author author) {
+    public EditionContributor(ContributorRole role, Author author) {
+        this.role = role;
         this.author = author;
-    }
-
-    public Edition getEdition() {
-        return edition;
     }
 
     public void setEdition(Edition edition) {
         this.edition = edition;
     }
-
-    public EditionAuthorRole getRole() {
-        return role;
-    }
-
-    public void setRole(EditionAuthorRole role) {
-        this.role = role;
-    }
-
 }

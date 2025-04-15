@@ -26,35 +26,27 @@ public class Language {
     @OneToMany(mappedBy = "language")
     Set<Edition> editions;
 
-    public Long getId() {
-        return id;
+    public Language() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Language(String isoCode, String name) {
+        this.isoCode = isoCode;
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getIsoCode() {
         return isoCode;
     }
 
-    public void setIsoCode(String isoCode) {
-        this.isoCode = isoCode;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Set<Edition> getEditions() {
         return editions;
-    }
-
-    public void setEditions(Set<Edition> editions) {
-        this.editions = editions;
     }
 }
