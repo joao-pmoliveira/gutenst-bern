@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gutenstobern.be_spring.dto.BookDTO;
-import com.gutenstobern.be_spring.dto.EditionDTO;
+import com.gutenstobern.be_spring.dto.BookEditionDTO;
 import com.gutenstobern.be_spring.service.BookService;
 
 @RestController
@@ -22,21 +21,15 @@ public class BookController {
     private BookService bookService;
 
     @GetMapping
-    public ResponseEntity<List<BookDTO>> getBooks() {
+    public ResponseEntity<List<BookEditionDTO>> getBooks() {
         return ResponseEntity.ok(bookService.getAllBooks());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<BookDTO> getBook(@PathVariable Long id) {
+    public ResponseEntity<BookEditionDTO> getBook(@PathVariable Long id) {
         return bookService.getBook(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
-    }
-
-    @GetMapping("/{id}/editions")
-    public ResponseEntity<List<EditionDTO>> getBookEditions(@PathVariable Long id) {
-        // TODO: return list of editions of a specific book
-        return null;
     }
 
 }

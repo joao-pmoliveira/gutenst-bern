@@ -35,6 +35,22 @@ public class EditionContributor {
         this.author = author;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public Edition getEdition() {
+        return edition;
+    }
+
+    public ContributorRole getRole() {
+        return role;
+    }
+
     public void setEdition(Edition edition) {
         this.edition = edition;
     }

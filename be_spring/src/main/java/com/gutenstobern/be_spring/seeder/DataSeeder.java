@@ -143,7 +143,8 @@ public class DataSeeder implements CommandLineRunner {
                 Set.of(
                         new Edition(
                                 "Pride and Prejudice", "Original English edition",
-                                null, null,
+                                "https://www.gutenberg.org/ebooks/1342",
+                                "https://www.gutenberg.org/cache/epub/1342/pg1342.cover.medium.jpg",
                                 english, 1813, 432,
                                 null),
                         new Edition(
@@ -157,7 +158,8 @@ public class DataSeeder implements CommandLineRunner {
                 Set.of(
                         new Edition(
                                 "The Adventures of Sherlock Holmes", "Original edition",
-                                null, null,
+                                "https://www.gutenberg.org/ebooks/1661",
+                                "https://www.gutenberg.org/cache/epub/1661/pg1661.cover.medium.jpg",
                                 english, 1892, 307,
                                 null)));
         Book mb = new Book(
@@ -166,7 +168,8 @@ public class DataSeeder implements CommandLineRunner {
                 Set.of(
                         new Edition(
                                 "Moby-Dick", "Original edition",
-                                null, null,
+                                "https://www.gutenberg.org/ebooks/2701",
+                                "https://www.gutenberg.org/cache/epub/2701/pg2701.cover.medium.jpg",
                                 english, 1851, 635,
                                 null)));
         Book dq = new Book(

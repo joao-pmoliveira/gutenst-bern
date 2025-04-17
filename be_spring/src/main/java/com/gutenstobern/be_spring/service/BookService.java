@@ -6,10 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gutenstobern.be_spring.dto.BookDTO;
-import com.gutenstobern.be_spring.dto.EditionDTO;
-import com.gutenstobern.be_spring.dto.LanguageDTO;
+import com.gutenstobern.be_spring.dto.AuthorDTO;
+import com.gutenstobern.be_spring.dto.BookEditionDTO;
+import com.gutenstobern.be_spring.dto.ContributorDTO;
 import com.gutenstobern.be_spring.entity.Book;
+import com.gutenstobern.be_spring.entity.Edition;
 import com.gutenstobern.be_spring.repository.BookRepository;
 
 @Service
@@ -18,50 +19,47 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
-    public Optional<BookDTO> getBook(Long id) {
+    public Optional<BookEditionDTO> getBook(Long id) {
         return bookRepository.findById(id)
-                .map(b -> generateBookDTO(b, false, false));
+                .map(b -> generateBookDTO(b));
     }
 
-    public List<BookDTO> getAllBooks() {
+    public List<BookEditionDTO> getAllBooks() {
         return bookRepository.findAll()
                 .stream()
-                .map(b -> generateBookDTO(b, false, false))
+                .map(b -> generateBookDTO(b))
                 .toList();
     }
 
-    Optional<BookDTO> getBookWithEditions(Long id) {
-        return bookRepository.findById(id)
-                .map(b -> generateBookDTO(b, false, true));
-    }
+    private BookEditionDTO generateBookDTO(Book book) {
+        BookEditionDTO bookEdition = new BookEditionDTO();
+        bookEdition.setBookId(book.getId());
+        bookEdition.setOriginalTitle(book.getTitleOriginal());
+        bookEdition.setAuthors(book.getAuthors()
+                .stream().map(a -> new AuthorDTO(a.getId(), a.getName()))
+                .toList());
 
-    private BookDTO generateBookDTO(Book book, boolean includeAuthors, boolean includeEditions) {
-        BookDTO bookDTO = new BookDTO(book.getId(), book.getTitleOriginal());
+        Optional<Edition> edition = book.getEditions()
+                .stream().findFirst();
 
-        if (includeAuthors) {
-            // TODO: generate authorDTO
-        }
+        edition.ifPresent(edit -> {
+            bookEdition.setEditionId(edit.getId());
+            bookEdition.setEditionTitle(edit.getTitle());
+            bookEdition.setDescription(edit.getDescription());
+            bookEdition.setLink(edit.getProjectGutenbergLink());
+            bookEdition.setCover(edit.getCoverURL());
+            bookEdition.setPages(edit.getPages());
+            bookEdition.setPublicationYear(edit.getPublicationYear());
+            bookEdition.setLanguageName(edit.getLanguage().getName());
+            bookEdition.setLanguageCode(edit.getLanguage().getIsoCode());
 
-        if (includeEditions) {
-            bookDTO.setEditions(book.getEditions()
+            bookEdition.setContributors(edit.getContributors()
                     .stream()
-                    .map(edition -> {
-                        LanguageDTO languageDTO = new LanguageDTO(edition.getLanguage().getIsoCode(),
-                                edition.getLanguage().getName());
-
-                        return new EditionDTO(
-                                edition.getId(),
-                                edition.getTitle(),
-                                edition.getDescription(),
-                                edition.getPages(),
-                                edition.getPublicationYear(),
-                                languageDTO, // lang
-                                null, // authors
-                                null); // book
-                    })
+                    .map(c -> new ContributorDTO(c.getAuthor().getId(), c.getAuthor().getName(), c.getRole().getName()))
                     .toList());
-        }
+        });
 
-        return bookDTO;
+        return bookEdition;
+
     }
 }

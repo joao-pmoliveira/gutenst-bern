@@ -34,4 +34,20 @@ public class Author {
     public Author(String name) {
         this.name = name;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public Set<EditionContributor> getContributions() {
+        return contributions;
+    }
 }
