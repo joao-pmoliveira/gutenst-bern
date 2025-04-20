@@ -1,5 +1,9 @@
 package com.gutenstobern.be_spring.dto;
 
+import com.gutenstobern.be_spring.entity.Author;
+import com.gutenstobern.be_spring.entity.ContributorRole;
+import com.gutenstobern.be_spring.entity.EditionContributor;
+
 public class ContributorDTO {
     Long authorId;
     String name;
@@ -14,6 +18,12 @@ public class ContributorDTO {
         this.role = role;
     }
 
+    public ContributorDTO(Author author, ContributorRole role) {
+        this.authorId = author.getId();
+        this.name = author.getName();
+        this.role = role.getName();
+    }
+
     public Long getAuthorId() {
         return authorId;
     }
@@ -24,5 +34,9 @@ public class ContributorDTO {
 
     public String getRole() {
         return role;
+    }
+
+    public static ContributorDTO from(EditionContributor contributor) {
+        return new ContributorDTO(contributor.getAuthor(), contributor.getRole());
     }
 }

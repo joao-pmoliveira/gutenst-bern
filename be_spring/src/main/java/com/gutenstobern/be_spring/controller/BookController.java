@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gutenstobern.be_spring.dto.BookEditionDTO;
+import com.gutenstobern.be_spring.dto.BookDTO;
 import com.gutenstobern.be_spring.service.BookService;
 
 @RestController
@@ -20,13 +20,13 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @GetMapping
-    public ResponseEntity<List<BookEditionDTO>> getBooks() {
-        return ResponseEntity.ok(bookService.getAllBooks());
+    @GetMapping(path = { "", "/" })
+    public ResponseEntity<List<BookDTO>> getBooks() {
+        return ResponseEntity.ok(bookService.getBooks());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<BookEditionDTO> getBook(@PathVariable Long id) {
+    public ResponseEntity<BookDTO> getBook(@PathVariable Long id) {
         return bookService.getBook(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());

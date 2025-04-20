@@ -31,6 +31,17 @@ public class Edition {
     @JoinColumn(name = "language_id", referencedColumnName = "id")
     Language language;
 
+    @Column(length = 255)
+    String title;
+    @Column(length = 255)
+    String description;
+    @Column(length = 255)
+    String projectGutenbergLink;
+    @Column(length = 255)
+    String coverURL;
+    int publicationYear;
+    int pages;
+
     public Edition() {
     }
 
@@ -51,17 +62,6 @@ public class Edition {
         this.pages = pages;
         this.contributors = contributors;
     }
-
-    @Column(length = 255)
-    String title;
-    @Column(length = 255)
-    String description;
-    @Column(length = 255)
-    String projectGutenbergLink;
-    @Column(length = 255)
-    String coverURL;
-    int publicationYear;
-    int pages;
 
     public Long getId() {
         return id;
