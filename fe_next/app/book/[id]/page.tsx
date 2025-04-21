@@ -1,5 +1,3 @@
-import { mapBookApi } from "@/lib/BookMapping";
-import { BookApi } from "@/types/Api";
 import { Book } from "@/types/Book";
 
 async function getBook(id: number): Promise<any> {
