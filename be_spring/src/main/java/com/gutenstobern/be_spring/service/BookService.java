@@ -33,37 +33,4 @@ public class BookService {
     private BookDTO toBookDTO(Book book) {
         return new BookDTO(book);
     }
-
-    // private BookEditionDTO generateBookDTO(Book book) {
-    // BookEditionDTO bookEdition = new BookEditionDTO();
-    // bookEdition.setBookId(book.getId());
-    // bookEdition.setOriginalTitle(book.getTitleOriginal());
-    // bookEdition.setAuthors(book.getAuthors()
-    // .stream().map(a -> new AuthorDTO(a.getId(), a.getName()))
-    // .toList());
-    //
-    // Optional<Edition> edition = book.getEditions()
-    // .stream().findFirst();
-    //
-    // edition.ifPresent(edit -> {
-    // bookEdition.setEditionId(edit.getId());
-    // bookEdition.setEditionTitle(edit.getTitle());
-    // bookEdition.setDescription(edit.getDescription());
-    // bookEdition.setLink(edit.getProjectGutenbergLink());
-    // bookEdition.setCover(edit.getCoverURL());
-    // bookEdition.setPages(edit.getPages());
-    // bookEdition.setPublicationYear(edit.getPublicationYear());
-    // bookEdition.setLanguageName(edit.getLanguage().getName());
-    // bookEdition.setLanguageCode(edit.getLanguage().getIsoCode());
-    //
-    // bookEdition.setContributors(edit.getContributors()
-    // .stream()
-    // .map(c -> new ContributorDTO(c.getAuthor().getId(), c.getAuthor().getName(),
-    // c.getRole().getName()))
-    // .toList());
-    // });
-    //
-    // return bookEdition;
-    //
-    // }
 }
