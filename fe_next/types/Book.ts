@@ -6,8 +6,9 @@ type Book = {
     description: string,
     link: string,
     cover: string,
-    year: string,
-    language: { name: string, code: string },
+    year: number,
+    pages: number,
+    language: { id: string, name: string, code: string },
     authors: Author[],
     contributors: Contributor[]
 }

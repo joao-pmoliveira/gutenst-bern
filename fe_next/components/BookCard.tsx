@@ -1,11 +1,12 @@
 import { Book } from "@/types/Book";
+import Link from "next/link";
 
 export default function BookCard(props: { book: Book }) {
     const book = props.book;
     const defaultCover = "/next.svg"
 
     return (
-        <div className="
+        <Link href={`/book/${book.id}`} className="
             w-full max-w-48
             group relative
             cursor-pointer
@@ -34,6 +35,6 @@ export default function BookCard(props: { book: Book }) {
             </p>
 
 
-        </div>
+        </Link>
     );
 }

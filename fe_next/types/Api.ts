@@ -4,7 +4,7 @@ type BookApi = {
     originalTitle: string,
     editionTitle: string,
     description: string,
-    publicationYear: string,
+    publicationYear: number,
     pages: number,
     link: string,
     cover: string,
