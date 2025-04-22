@@ -29,8 +29,6 @@ async function getBook(id: number): Promise<any> {
 
     const bookRes = await fetch(`http://localhost:8080/api/books/${book.bookId}`);
     const bookData = await bookRes.json();
-    console.log(editionData);
-    console.log(bookData);
     book.originalTitle = bookData["originalTitle"]
     book.authors = bookData["authors"].map((author: any) => ({ id: author["id"], name: author["name"] }));
 

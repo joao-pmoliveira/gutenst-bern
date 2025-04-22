@@ -2,11 +2,6 @@ import { BookApi } from "@/types/Api";
 import { Book } from "@/types/Book";
 
 function mapBookApi(data: BookApi): Book {
-    console.log("This is the book api mapping");
-    console.log(data);
-
-
-
     return ({
         id: String(data.editionId),
         bookId: String(data.bookId),
@@ -18,6 +13,7 @@ function mapBookApi(data: BookApi): Book {
         link: data.link,
         cover: data.cover,
         language: {
+            id: "",
             name: data.languageName,
             code: data.languageCode
         },
