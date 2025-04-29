@@ -75,32 +75,64 @@ public class Edition {
         return contributors;
     }
 
+    public void setContributors(Set<EditionContributor> contributors) {
+        this.contributors = contributors;
+    }
+
     public Language getLanguage() {
         return language;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
     }
 
     public String getTitle() {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getDescription() {
         return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getProjectGutenbergLink() {
         return projectGutenbergLink;
     }
 
+    public void setProjectGutenbergLink(String projectGutenbergLink) {
+        this.projectGutenbergLink = projectGutenbergLink;
+    }
+
     public String getCoverURL() {
         return coverURL;
+    }
+
+    public void setCoverURL(String coverURL) {
+        this.coverURL = coverURL;
     }
 
     public int getPublicationYear() {
         return publicationYear;
     }
 
+    public void setPublicationYear(int publicationYear) {
+        this.publicationYear = publicationYear;
+    }
+
     public int getPages() {
         return pages;
+    }
+
+    public void setPages(int pages) {
+        this.pages = pages;
     }
 
     public void setBook(Book book) {

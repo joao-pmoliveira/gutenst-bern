@@ -48,12 +48,24 @@ public class Book {
         return titleOriginal;
     }
 
+    public void setTitleOriginal(String titleOriginal) {
+        this.titleOriginal = titleOriginal;
+    }
+
     public Set<Author> getAuthors() {
         return authors;
     }
 
+    public void setAuthors(Set<Author> authors) {
+        this.authors = authors;
+    }
+
     public Set<Edition> getEditions() {
         return editions;
+    }
+
+    public void setEditions(Set<Edition> editions) {
+        this.editions = editions;
     }
 
 }
