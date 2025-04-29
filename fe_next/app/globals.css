@@ -1,17 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-    --aspect-cover: 4/5;
+    --font-serif: "Lora", sans-serif;
+    --font-sans: "Inter", serif;
+
+    /* Base white */
+    --color-gallery: lch(94.1% 0 0);
+
+    /* Base black */
+    --color-woodsmoke: lch(5.06% 0 0);
+    
+    /* Base light */
+    --color-spring-wood: lch(96.32% 2.81 82.01);
+    --color-desert-storm: lch(97.67% 1.72 79.96);
+    --color-ecru-white: lch(95.75% 6.11 97.88);
+
+    /* Base dark */
+    --color-bottle-green: lch(17.37% 21.6 161.45);
+    --color-gable-green: lch(22.05% 12.44 178.9);
+    --color-green-pea: lch(40.53% 28.3 160.61);
+
+    /* Accent light */
+    --color-equator: lch(82.81% 52.97 77.5);
+
+    /* Accent dark */
+    --color-patina: lch(59.81% 19.78 171.31);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-serif: "Lora", serif;
+  --font-sans: "Inter", sans-serif;
+  --font-mono: mono;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -117,10 +142,11 @@
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+    * {
+        @apply border-border outline-ring/50;
     }
-  body {
-    @apply bg-background text-foreground;
+    body {
+        @apply bg-background text-foreground;
+        @apply font-sans;
     }
 }
